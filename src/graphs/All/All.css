@@ -1,0 +1,22 @@
+/*mobile view*/
+h3 {
+  display: flex;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+  font-size: 22px;
+}
+
+.results_group {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  padding: 10px;
+}
+
+/*desktop view*/
+@media screen and (min-width: 600px) {
+  h3 {
+    margin: 10px 0px 10px 0px;
+    font-size: 28px;
+  }
+}
