@@ -1,0 +1,44 @@
+/* mobile view */
+  .Nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: white;
+    font-size: 18px;
+  }
+/* desktop view */
+@media screen and (min-width: 600px) {
+  .Nav {
+    display: block;
+    height: 100%;
+    width: 120px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 45px;
+    margin: 0px;
+  }
+
+  nav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+  }
+
+  h4 {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+  }
+}
