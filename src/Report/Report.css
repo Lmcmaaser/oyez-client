@@ -1,0 +1,100 @@
+/*mobile view*/
+h3 {
+  display: flex;
+  text-align: center;
+  margin: 0px 0px 10px 0px;
+  font-size: 22px;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  padding: 10px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  background-color: lightgrey;
+  border: none;
+  margin: 0px;
+}
+
+legend {
+  display: none;
+}
+
+.main-label {
+  font-weight: bold;
+  margin: 5px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+select {
+  margin: 5px;
+  padding: 5px;
+  width: 50%;
+  height: 30px;
+}
+
+input[type=text] {
+  margin: 5px;
+  padding: 5px;
+  width: 50%;
+  height: 30px;
+}
+
+input[type=radio] {
+  margin: 5px;
+  padding: 5px;
+  height: 20px;
+  width: 20px;
+}
+
+input[type=date] {
+  margin: 5px;
+  padding: 5px;
+  width: 50%;
+  height: 30px;
+}
+
+button.submit-button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+}
+
+/*desktop view*/
+@media screen and (min-width: 600px) {
+  h3 {
+    margin: 10px 0px 10px 0px;
+    font-size: 28px;
+  }
+
+  fieldset {
+    font-size: 22px;
+  }
+
+  input[type=text] {
+    margin: 5px;
+    padding: 5px;
+    width: 40%;
+    height: 35px;
+  }
+
+  select {
+    margin: 5px;
+    padding: 5px;
+    width: 40%;
+    height: 35px;
+  }
+}
