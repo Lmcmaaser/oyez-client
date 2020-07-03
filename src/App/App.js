@@ -1,5 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import Nav from '../Nav/Nav';
+import Blurb from '../Blurb/Blurb';
+import Report from '../Report/Report';
+import ShowAll from '../graphs/ShowAll/ShowAll';
+import ShowState from '../graphs/ShowState/ShowState';
+import ShowZipCode from '../graphs/ShowZipCode/ShowZipCode';
+import ApiContext from '../ApiContext';
+import Footer from '../Footer/Footer';
 import './App.css';
 
 function App() {
