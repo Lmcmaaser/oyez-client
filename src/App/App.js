@@ -1,11 +1,12 @@
+import config from '../config';
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Blurb from '../Blurb/Blurb';
 import Report from '../Report/Report';
-import ShowAll from '../graphs/All/All';
-import ShowState from '../graphs/State/State';
-import ShowZipCode from '../graphs/ZipCode/ZipCode';
+import All from '../graphs/All';
+import State from '../graphs/State';
+import ZipCode from '../graphs/ZipCode';
 import ApiContext from '../ApiContext';
 import Footer from '../Footer/Footer';
 import './App.css';
@@ -15,12 +16,12 @@ export defualt class App extends Componenet {
     super(props)
     this.state = {
       reports: [],
-      us_states: []
+      usstates: []
     }
   }
 
   handleAddReport = report => {
-    fetch(`${config.API_ENDPOINT}pets`, {
+    fetch(`${config.API_ENDPOINT}/reports`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -43,14 +44,14 @@ export defualt class App extends Componenet {
 
   getAllData() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}reports`, {
+      fetch(`${config.API_ENDPOINT}/reports`, {
         method: 'GET',
         headers: {
           'content-type': 'application/json',
           'authorization': `bearer ${config.API_TOKEN}`
         }
       }),
-      fetch(`${config.API_ENDPOINT}us_states`, {
+      fetch(`${config.API_ENDPOINT}usstates`, {
         method: 'GET',
         headers: {
           'content-type': 'application/json',
@@ -58,15 +59,15 @@ export defualt class App extends Componenet {
         }
       })
     ])
-      .then(([reportsRes, us_statesRes]) => {
+      .then(([reportsRes, usstatesRes]) => {
         if (!reportsRes.ok)
           return reportsRes.json().then(e => Promise.reject(e));
-        if (!us_statesRes.ok)
+        if (!usstatesRes.ok)
           return us_statesRes.json().then(e => Promise.reject(e));
-        return Promise.all([reportsRes.json(), us_statesRes.json()])
+        return Promise.all([reportsRes.json(), usstatesRes.json()])
       })
-      .then(([reports, us_states]) => {
-        this.setState({reports. us_states});
+      .then(([reports, usstates]) => {
+        this.setState({reports. usstates});
       })
       .catch(error => {
         console.error({error});
@@ -78,7 +79,7 @@ export defualt class App extends Componenet {
   }
   render() {
     const contextValue = {
-      us_states: this.state.us_states,
+      usstates: this.state.usstates,
       reports: this.state.reports,
       addReport: this.handleAddReport
     }
@@ -94,9 +95,9 @@ export defualt class App extends Componenet {
           <main className="main_content" role="main">
             <Route exact path='/' component={Blurb}/>
               <Route path='/report' component={Report} />
-              <Route path='/all' component={ShowAll} />
-              <Route path='/state' component={ShowState} />
-              <Route path='/zipcode' component={ShowZipCode} />
+              <Route path='/all' component={All} />
+              <Route path='/state' component={State} />
+              <Route path='/zipcode' component={ZipCode} />
           </main>
           <footer>
             <Footer />

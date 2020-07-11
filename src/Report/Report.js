@@ -43,6 +43,7 @@ export default class Report extends React.Component {
   updateHousehold(household) {
     this.setState({household: {value: household, touched: true}});
   }
+  update
 
   handleSubmit(event) {
     event.preventDefault();
@@ -54,6 +55,7 @@ export default class Report extends React.Component {
       date: date.value,
       household: household.value
     }
+    console.log(report);
     this.context.addReport(report);
     this.resetForm();
     this.props.history.push('/');
@@ -110,8 +112,8 @@ export default class Report extends React.Component {
                 required
                 aria-label="select state"
               >
-                {this.context.us_states.map(us_state =>
-                  <option key={us_state.stateid} value={us_state.stateid}>{us_state.name}</option>
+                {this.context.usstates.map(usstate =>
+                  <option key={usstate.stateid} value={usstate.stateid}>{usstate.name}</option>
                 )}
               </select>
               <label className="main-label">What is your zip code?</label>
