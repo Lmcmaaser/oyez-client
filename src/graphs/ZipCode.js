@@ -24,7 +24,7 @@ export default class ZipCode extends React.Component {
       code: event.target.code.value
     }
     this.setState(zip);
-    console.log(zip);
+    console.log(zip); // shows {code: "85308"}
     console.log(this.state.code); //shows zip code number only
   }
 
