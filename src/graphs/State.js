@@ -4,7 +4,7 @@ import './State.css';
 import CanvasJSReact from '../canvasjs-2.3.2/canvasjs.react';
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-export default class ShowState extends React.Component {
+export default class State extends React.Component {
   static contextType = ApiContext;
   constructor(props) {
     super(props)
@@ -113,8 +113,8 @@ export default class ShowState extends React.Component {
                   required
                   aria-label="select state"
                 >
-                  {this.context.usstates.map(usstate =>
-                    <option key={usstate.stateid} value={usstate.stateid}>{usstate.name}</option>
+                  {this.context.us_states.map(us_state =>
+                    <option key={us_state.stateid} value={us_state.stateid}>{us_state.name}</option>
                   )}
                 </select>
                 <button

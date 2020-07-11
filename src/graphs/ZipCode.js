@@ -6,7 +6,7 @@ let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 
 //user selects a zipcode, graph displays the diagnosis_type and date for all reports with that zipcode
-export default class ShowZipCode extends React.Component {
+export default class ZipCode extends React.Component {
   static contextType = ApiContext;
   constructor(props) {
     super(props)
@@ -21,34 +21,34 @@ export default class ShowZipCode extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const zip = {
-      code: {
-        value: event.target.code.value,
-        touched: true
-      }
+      code: event.target.code.value
     }
     this.setState(zip);
     console.log(zip);
+    console.log(this.state.code); //shows zip code number only
   }
 
   getFilteredReports = (reports) => {
     return reports.filter((report) => {
-        if ((!this.state.code|| this.state.code === report.code)) {
-          return true;
-        } else {
-          return false;
-        }
+      if ((!this.state.code || this.state.code === report.code)) {
+        return true;
+      } else {
+        return false;
+      }
     });
   }
 
   render() {
     //place rendering of graph in an if else statement if touched is true, display graph
+    console.log(this.state.code); //shows zipcode number
     let dataPoints =  [];
     let existingValues = this.context.reports;
+    console.log(existingValues); //shows all reports
     let selfCount = 0;
     let testCount = 0;
     let doctorCount = 0;
     let filteredReports = this.getFilteredReports(existingValues)
-    console.log(this.state.code);
+    console.log(filteredReports); //empty array
     let labelTest = {label: "test"};
     let labelDoc = {label: "doctor"};
     let labelSelf = {label: "self"};
@@ -60,6 +60,7 @@ export default class ShowZipCode extends React.Component {
     for (let i = 0; i < filteredReports.length; i++) {
       count++
     }
+    console.log(count);
 
     // count how many reports for each diagnosis type
     for (let i = 0; i < filteredReports.length; i++) {
@@ -74,8 +75,11 @@ export default class ShowZipCode extends React.Component {
 
     // translate diagnosis_type counts to percentages
     let testNumber = {y: (testCount/count*100).toFixed(2)};
+    console.log(testNumber);
     let selfNumber = {y: (selfCount/count*100).toFixed(2)};
+    console.log(selfNumber);
     let doctorNumber = {y: (doctorCount/count*100).toFixed(2)};
+    console.log(doctorNumber);
 
     //combine x and y axis into 1 object {label: '', y: ''}
     testPoints = Object.assign(labelTest, testNumber);
@@ -84,7 +88,7 @@ export default class ShowZipCode extends React.Component {
 
     // add desired objects to dataPoints array
     dataPoints.push(testPoints, doctorPoints, selfPoints);
-    console.log(dataPoints);
+    console.log(dataPoints); //correct format
 
     const options = {
 			exportEnabled: true,

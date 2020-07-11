@@ -2,7 +2,7 @@ import React from 'react';
 
 const ApiContext = React.createContext({
   reports: [],
-  usstates: [],
+  us_states: [],
   addReport: () => {}
 });
 

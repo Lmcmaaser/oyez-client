@@ -11,12 +11,17 @@ import ApiContext from '../ApiContext';
 import Footer from '../Footer/Footer';
 import './App.css';
 
-export defualt class App extends Componenet {
+export default class App extends Component {
+   static defaultProps = {
+    data: {
+      us_states: []
+    }
+  };
   constructor(props) {
     super(props)
     this.state = {
       reports: [],
-      usstates: []
+      us_states: this.props.data.us_states,
     }
   }
 
@@ -50,24 +55,15 @@ export defualt class App extends Componenet {
           'content-type': 'application/json',
           'authorization': `bearer ${config.API_TOKEN}`
         }
-      }),
-      fetch(`${config.API_ENDPOINT}usstates`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          'authorization': `bearer ${config.API_TOKEN}`
-        }
       })
     ])
-      .then(([reportsRes, usstatesRes]) => {
+      .then(([reportsRes]) => {
         if (!reportsRes.ok)
           return reportsRes.json().then(e => Promise.reject(e));
-        if (!usstatesRes.ok)
-          return us_statesRes.json().then(e => Promise.reject(e));
-        return Promise.all([reportsRes.json(), usstatesRes.json()])
+        return Promise.all([reportsRes.json()])
       })
-      .then(([reports, usstates]) => {
-        this.setState({reports. usstates});
+      .then(([reports]) => {
+        this.setState({reports});
       })
       .catch(error => {
         console.error({error});
@@ -79,10 +75,12 @@ export defualt class App extends Componenet {
   }
   render() {
     const contextValue = {
-      usstates: this.state.usstates,
+      us_states: this.state.us_states,
       reports: this.state.reports,
       addReport: this.handleAddReport
     }
+    console.log(this.state.reports);
+    console.log(this.state.us_states);
     return (
       <ApiContext.Provider value={contextValue}>
         <div className="App">

@@ -1,22 +1,22 @@
 import React from 'react';
+import './All.css';
 import ApiContext from '../ApiContext';
 import CanvasJSReact from '../canvasjs-2.3.2/canvasjs.react';
-import './All.css';
-
-//let CanvasJS = CanvasJSReact.CanvasJS;
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-export default class ShowAll extends React.Component {
+export default class All extends React.Component {
   static contextType = ApiContext;
   render() {
+    const { reports, us_states } = this.context;
     let dataPoints =  [];
     let selectedValues = [];
-    this.context.reports.forEach(report => {
-      let existingValue = selectedValues.find(value => value.stateid === report.stateid);
+    console.log(reports);
+    reports.forEach(report => {
+      let existingValue = selectedValues.find(value => value.stateid === parseInt(report.stateid));
         if (existingValue === undefined) {
           selectedValues.push({
             stateid: report.stateid,
-            name: this.context.us_states.find(us_state => us_state.stateid === report.stateid).name,
+            name: us_states.find(us_state => us_state.stateid === report.stateid).name,
             count: 1
           });
         } else {

@@ -9,6 +9,10 @@ export default class Report extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      stateid: {
+        value: '',
+        touched: true
+      },
       code: {
         value: '',
         touched: false
@@ -17,7 +21,7 @@ export default class Report extends React.Component {
         value: '',
         touched: false
       },
-      date: {
+      diagnosis_date: {
         value: '',
         touched: false
       },
@@ -28,6 +32,10 @@ export default class Report extends React.Component {
     }
   }
 
+  updateStateId(stateid) {
+    console.log(stateid);
+    this.setState({stateid: {value: stateid, touched: true}});
+  }
   updateZipCode(code) {
     console.log(code);
     this.setState({code: {value: code, touched: true}});
@@ -36,24 +44,23 @@ export default class Report extends React.Component {
     console.log(diagnosis_type);
     this.setState({diagnosis_type: {value: diagnosis_type, touched: true}});
   }
-  updateDate(date) {
-    console.log(date);
-    this.setState({date: {value: date, touched: true}});
+  updateDiagnosisDate(diagnosis_date) {
+    console.log(diagnosis_date);
+    this.setState({diagnosis_date: {value: diagnosis_date, touched: true}});
   }
   updateHousehold(household) {
     this.setState({household: {value: household, touched: true}});
   }
-  update
 
   handleSubmit(event) {
     event.preventDefault();
-    const { code, diagnosis_type, date, household} = this.state;
+    const { code, diagnosis_type, diagnosis_date, household, stateid } = this.state;
     const report = {
-      stateid: event.target.stateid.value,
       code: code.value,
       diagnosis_type: diagnosis_type.value,
-      date: date.value,
-      household: household.value
+      diagnosis_date: diagnosis_date.value,
+      household: household.value,
+      stateid: stateid.value
     }
     console.log(report);
     this.context.addReport(report);
@@ -71,7 +78,7 @@ export default class Report extends React.Component {
         value: '',
         touched: false
       },
-      date: {
+      diagnosis_date: {
         value: '',
         touched: false
       },
@@ -111,9 +118,10 @@ export default class Report extends React.Component {
                 name="stateid"
                 required
                 aria-label="select state"
+                onChange={event => this.updateStateId(event.target.value)}
               >
-                {this.context.usstates.map(usstate =>
-                  <option key={usstate.stateid} value={usstate.stateid}>{usstate.name}</option>
+                {this.context.us_states.map(us_state =>
+                  <option key={us_state.stateid} value={us_state.stateid}>{us_state.name}</option>
                 )}
               </select>
               <label className="main-label">What is your zip code?</label>
@@ -170,11 +178,11 @@ export default class Report extends React.Component {
                 <input
                   type="date"
                   required
-                  name="date"
-                  id="date"
+                  name="diagnosis_date"
+                  id="diagnosis_date"
                   aria-label="date of diagnosis"
-                  value={this.state.date.value}
-                  onChange={event => this.updateDate(event.target.value)}
+                  value={this.state.diagnosis_date.value}
+                  onChange={event => this.updateDiagnosisDate(event.target.value)}
                 />
               <label className="main-label">
                 How many people live with you in your household?
