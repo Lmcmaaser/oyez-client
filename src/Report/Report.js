@@ -64,31 +64,31 @@ export default class Report extends React.Component {
     }
     console.log(report);
     this.context.addReport(report);
-    this.resetForm();
-    this.props.history.push('/');
+    //this.resetForm();
+    this.props.history.push('/search');
   }
 
-  resetForm() {
-    this.setState({
-      code: {
-        value: '',
-        touched: false
-      },
-      diagnosis_type: {
-        value: '',
-        touched: false
-      },
-      diagnosis_date: {
-        value: '',
-        touched: false
-      },
-      household: {
-        value: '',
-        touched: false
-      }
-    })
-    document.querySelector('input[name="diagnosis_type"]:checked').checked = false;
-  }
+  // resetForm() {
+  //   this.setState({
+  //     code: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     diagnosis_type: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     diagnosis_date: {
+  //       value: '',
+  //       touched: false
+  //     },
+  //     household: {
+  //       value: '',
+  //       touched: false
+  //     }
+  //   })
+  //   document.querySelector('input[name="diagnosis_type"]:checked').checked = false;
+  // }
 
   validateZipCode() {
     const zip_code = this.state.code.value.trim();

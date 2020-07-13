@@ -15,22 +15,27 @@ export default class ZipCode extends React.Component {
         value: '',
         touched: false
       },
+      issubmitted: false
     }
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const zip = {
-      code: event.target.code.value
+      value: event.target.code.value,
+      touched: true
     }
-    this.setState(zip);
+    this.setState({
+      code: zip,
+      issubmitted: true
+    });
     console.log(zip); // shows {code: "85308"} value is a string
     console.log(this.state.code); //shows zip code number only, value is int
   }
 
   getFilteredReports = (reports) => {
     return reports.filter((report) => {
-      if ((parseInt(!this.state.code) || parseInt(this.state.code) === report.code)) {
+      if ((parseInt(!this.state.code.value) || parseInt(this.state.code.value) === report.code)) {
         return true;
       } else {
         return false;
@@ -39,13 +44,14 @@ export default class ZipCode extends React.Component {
   }
 
   render() {
-    //place rendering of graph in an if else statement if touched is true, display graph
     let dataPoints =  [];
     let existingValues = this.context.reports;
     let selfCount = 0;
     let testCount = 0;
     let doctorCount = 0;
     let filteredReports = this.getFilteredReports(existingValues)
+    console.log(filteredReports);
+
     let labelTest = {label: "test"};
     let labelDoc = {label: "doctor"};
     let labelSelf = {label: "self"};
@@ -83,6 +89,7 @@ export default class ZipCode extends React.Component {
     dataPoints.push(testPoints, doctorPoints, selfPoints);
     console.log(dataPoints); //correct format
 
+    //place rendering of graph in an if else statement if touched is true, display graph
     const options = {
 			exportEnabled: true,
 			animationEnabled: true,
@@ -100,6 +107,7 @@ export default class ZipCode extends React.Component {
 				dataPoints: dataPoints
 			}]
 		}
+    let issubmitted = this.state.issubmitted;
     return (
       <div>
       <form className="form-group" onSubmit={event => this.handleSubmit(event)}>
@@ -126,9 +134,14 @@ export default class ZipCode extends React.Component {
       </form>
         <div className="results_group">
           <div className="canvas">
+            {
+            filteredReports.length === 0 && this.state.code.touched ?
+              <div>There are no reports for that zipcode.</div>:
+            issubmitted ?
             <CanvasJSChart options = {options}
               onRef={ref => this.chart = ref}
             />
+            : <></>}
           </div>
         </div>
       </div>

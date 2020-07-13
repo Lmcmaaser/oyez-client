@@ -32,9 +32,13 @@ export default class All extends React.Component {
       });
     }
     console.log(stateidValues); //returns an array of stateid objects (ex. {stateid: 3})
+
+    // let stateidValues === this.context.us_states.filter(state => {
+    //if state.id === })
+
     for (let i = 0; i < selectedValues.length; i++) {
       dataPoints.push({
-        label: selectedValues[i].name,
+        label: selectedValues[i].name, // undefined
         y: selectedValues[i].count
       });
     }
