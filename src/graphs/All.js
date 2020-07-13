@@ -7,30 +7,39 @@ let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export default class All extends React.Component {
   static contextType = ApiContext;
   render() {
-    const { reports, us_states } = this.context;
     let dataPoints =  [];
     let selectedValues = [];
-    console.log(reports);
-    reports.forEach(report => {
+    let existingStates = this.context.us_states;
+    console.log(existingStates
+    )
+    this.context.reports.forEach(report => {
       let existingValue = selectedValues.find(value => value.stateid === parseInt(report.stateid));
         if (existingValue === undefined) {
           selectedValues.push({
             stateid: report.stateid,
-            name: us_states.find(us_state => us_state.stateid === report.stateid).name,
+            // name: this.context.us_states.find(us_state => us_state.stateid === report.stateid).name,
             count: 1
           });
         } else {
         existingValue.count++;
       }
     });
-    console.log(selectedValues); //array of objects
-
+    console.log(selectedValues); //array of objects, stateid and number or reports for each state
+    let stateidValues = [];
+    for(let i = 0; i < selectedValues.length; i++) {
+      stateidValues.push({
+        stateid:selectedValues[i].stateid
+      });
+    }
+    console.log(stateidValues); //returns an array of stateid objects (ex. {stateid: 3})
     for (let i = 0; i < selectedValues.length; i++) {
       dataPoints.push({
         label: selectedValues[i].name,
         y: selectedValues[i].count
       });
     }
+    console.log(dataPoints); //has report count
+
     const options = {
       animationEnabled: true,
 			theme: "light2",

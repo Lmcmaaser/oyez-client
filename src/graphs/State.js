@@ -21,14 +21,15 @@ export default class State extends React.Component {
     const us_state = {
       stateid: event.target.stateid.value,
     }
-    console.log(us_state);
     this.setState(us_state);
+    console.log(us_state); // {stateid: "3"}
+    console.log(this.state.stateid); // 3
   }
 
   //selects reports by state
   getFilteredReports = (reports) => {
     return reports.filter((report) => {
-        if ((!this.state.stateid || this.state.stateid === report.stateid)) {
+        if ((parseInt(!this.state.stateid) || parseInt(this.state.stateid) === report.stateid)) {
           return true;
         } else {
           return false;
@@ -50,16 +51,20 @@ export default class State extends React.Component {
   }
 
   render() {
+    console.log(this.state.stateid); // 3
   //date & number of reports data
     let dataPoints =  [];
     let selectedValues = [];
     let existingValues = this.context.reports;
+    console.log(existingValues); //shows all arrays
     let filteredReports = this.getFilteredReports(existingValues);
+    console.log(filteredReports); // working
     for (let i = 0; i < filteredReports.length; i++) {
       selectedValues.push({
-        label: filteredReports[i].date
+        label: filteredReports[i].diagnosis_date
       })
     } // returns date values, includes duplicate dates
+    console.log(selectedValues);
 
     //removes duplicate date values
     let jsonObject = selectedValues.map(JSON.stringify);
@@ -67,7 +72,9 @@ export default class State extends React.Component {
     let uniqueArray = Array.from(uniqueSet).map(JSON.parse);
     // counts date occurences
     let dateOccurences = this.duplicateDates(selectedValues);
+    console.log(dateOccurences)
     let dateCount = Object.values(dateOccurences);
+    console.log(dateCount)
     let yObj = [];
     // retrieves coutn values and formats for graph
     for (let i = 0; i < dateCount.length; i++) {
@@ -84,10 +91,12 @@ export default class State extends React.Component {
       }
     })
 
+    console.log(dataPoints);
+
     const options = {
 			theme: "light2",
 			title: {
-				text: "Reports Over Time"
+				text: "New Reports Over Time"
           //{ message: `Reports Over Time for the state of '${us_state.stateid}'`}
 			},
 			axisY: {

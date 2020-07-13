@@ -6,8 +6,10 @@
     justify-content: space-evenly;
     list-style-type: none;
     padding: 15px;
-    margin-top: 10px;
+    margin: 5px 0px 5px 0px;
     background-color: white;
+    border: 5px solid #FAA341;
+    border-radius: 8px;
     font-size: 18px;
   }
 /* desktop view */
@@ -20,10 +22,14 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #FAA341; /* #111; */
+    border: 5px solid #FAA341;
+    border-radius: 8px;
     overflow-x: hidden;
     padding-top: 45px;
     margin: 0px;
+    /* border: 5px solid #111;
+    border-radius: 8px; */
   }
 
   nav a {

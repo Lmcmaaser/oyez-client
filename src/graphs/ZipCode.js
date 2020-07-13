@@ -24,13 +24,13 @@ export default class ZipCode extends React.Component {
       code: event.target.code.value
     }
     this.setState(zip);
-    console.log(zip); // shows {code: "85308"}
-    console.log(this.state.code); //shows zip code number only
+    console.log(zip); // shows {code: "85308"} value is a string
+    console.log(this.state.code); //shows zip code number only, value is int
   }
 
   getFilteredReports = (reports) => {
     return reports.filter((report) => {
-      if ((!this.state.code || this.state.code === report.code)) {
+      if ((parseInt(!this.state.code) || parseInt(this.state.code) === report.code)) {
         return true;
       } else {
         return false;
@@ -40,15 +40,12 @@ export default class ZipCode extends React.Component {
 
   render() {
     //place rendering of graph in an if else statement if touched is true, display graph
-    console.log(this.state.code); //shows zipcode number
     let dataPoints =  [];
     let existingValues = this.context.reports;
-    console.log(existingValues); //shows all reports
     let selfCount = 0;
     let testCount = 0;
     let doctorCount = 0;
     let filteredReports = this.getFilteredReports(existingValues)
-    console.log(filteredReports); //empty array
     let labelTest = {label: "test"};
     let labelDoc = {label: "doctor"};
     let labelSelf = {label: "self"};
@@ -60,7 +57,6 @@ export default class ZipCode extends React.Component {
     for (let i = 0; i < filteredReports.length; i++) {
       count++
     }
-    console.log(count);
 
     // count how many reports for each diagnosis type
     for (let i = 0; i < filteredReports.length; i++) {
@@ -75,11 +71,8 @@ export default class ZipCode extends React.Component {
 
     // translate diagnosis_type counts to percentages
     let testNumber = {y: (testCount/count*100).toFixed(2)};
-    console.log(testNumber);
     let selfNumber = {y: (selfCount/count*100).toFixed(2)};
-    console.log(selfNumber);
     let doctorNumber = {y: (doctorCount/count*100).toFixed(2)};
-    console.log(doctorNumber);
 
     //combine x and y axis into 1 object {label: '', y: ''}
     testPoints = Object.assign(labelTest, testNumber);

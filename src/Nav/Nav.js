@@ -2,25 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Content from '../content';
 import './Nav.css';
+import { GrHome } from "react-icons/gr";
+import { GrAddCircle } from "react-icons/gr";
+import { GrSearch } from "react-icons/gr";
 
 export default class Nav extends React.Component {
   render () {
     return (
       <Content className='Nav'>
         <Link to='/'>
-          Home
+          <GrHome />
         </Link>
         <Link to='/report'>
-          Report
+          <GrAddCircle />
         </Link>
-        <Link to='/all'>
-          View All
-        </Link>
-        <Link to='/state'>
-          View State
-        </Link>
-        <Link to='/zipcode'>
-          View Zip Code
+        <Link to='/search'>
+          <GrSearch />
         </Link>
       </Content>
     )

@@ -5,7 +5,9 @@
 }
 
 header {
-  background-color: white;
+  background-color: #B0AFE3;
+  border: 5px solid #B0AFE3;
+  border-radius: 8px;
   display: flex;
   justify-content: flex-end;
 }
@@ -23,19 +25,26 @@ h1 {
   justify-content: center;
   padding: 15px;
   font-size: 22px; /* Increased text to enable scrolling */
+  border: 5px solid #FAA341;
+  border-radius: 8px;
 }
 
 /*desktop view*/
 @media screen and (min-width: 600px) {
 
   header {
-    background-color: white;
+    margin: 10px 10px 0px 130px;
+    background-color: #B0AFE3;
+    border: 5px solid #B0AFE3;
+    border-radius: 8px;
     text-align: right;
   }
 
   .main_content {
-    margin: 0px 0px 10px 120px; /* Same as the width of the sidenav */
+    margin: 10px 10px 10px 130px; /* Same as the width of the sidenav */
     font-size: 22px; /* Increased text to enable scrolling */
     padding: 0px 10px;
+    border: 5px solid #FAA341;
+    border-radius: 8px;
   }
 }
