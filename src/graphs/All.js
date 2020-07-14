@@ -10,8 +10,9 @@ export default class All extends React.Component {
     let dataPoints =  [];
     let selectedValues = [];
     let existingStates = this.context.us_states;
-    console.log(existingStates
-    )
+    let stateValue = [];
+    console.log(existingStates)
+
     this.context.reports.forEach(report => {
       let existingValue = selectedValues.find(value => value.stateid === parseInt(report.stateid));
         if (existingValue === undefined) {
@@ -33,8 +34,15 @@ export default class All extends React.Component {
     }
     console.log(stateidValues); //returns an array of stateid objects (ex. {stateid: 3})
 
-    // let stateidValues === this.context.us_states.filter(state => {
-    //if state.id === })
+    for(let i = 0; i < existingStates.length; i++) {
+      for(let j = 0; j < stateidValues.length; j++) {
+        // console.log("vals: ", this.context.us_states[i], stateidValues[j]);
+        if (Number(existingStates[i].stateid) ===   Number(stateidValues[j].stateid)) {
+          stateValue.push(existingStates[i])
+        }
+      }
+    }
+    console.log(stateValue);
 
     for (let i = 0; i < selectedValues.length; i++) {
       dataPoints.push({
