@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Content from '../content';
+import { GrAddCircle } from "react-icons/gr";
 import ApiContext from '../ApiContext';
 import './State.css';
 import CanvasJSReact from '../canvasjs-2.3.2/canvasjs.react';
@@ -12,16 +15,21 @@ export default class State extends React.Component {
       stateid: {
         value: '',
         touched: false
-      }
+      },
+      issubmitted: false
     }
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const us_state = {
-      stateid: event.target.stateid.value,
+      value: event.target.stateid.value,
+      touched: true
     }
-    this.setState(us_state);
+    this.setState({
+      stateid: us_state,
+      issubmitted: true
+    });
     console.log(us_state); // {stateid: "3"}
     console.log(this.state.stateid); // 3
   }
@@ -29,7 +37,7 @@ export default class State extends React.Component {
   //selects reports by state
   getFilteredReports = (reports) => {
     return reports.filter((report) => {
-        if ((parseInt(!this.state.stateid) || parseInt(this.state.stateid) === report.stateid)) {
+        if ((parseInt(!this.state.stateid.value) || parseInt(this.state.stateid.value) === report.stateid)) {
           return true;
         } else {
           return false;
@@ -117,6 +125,8 @@ export default class State extends React.Component {
 				dataPoints: dataPoints
 			}]
 		}
+
+    let issubmitted = this.state.issubmitted;
     return (
       <div>
         <form className="form-group" onSubmit={event => this.handleSubmit(event)}>
@@ -145,9 +155,20 @@ export default class State extends React.Component {
         </form>
         <div className="results_group">
           <div className="canvas">
+            {
+            filteredReports.length === 0 && this.state.stateid.touched ?
+              <div>No reports have been subbmitted for that state. Would you like to submit a report?
+                <Content className='submitReport'>
+                  <Link to='/report'>
+                    <GrAddCircle />
+                  </Link>
+                </Content>
+              </div>:
+            issubmitted ?
             <CanvasJSChart options = {options}
-				      onRef={ref => this.chart = ref}
-			      />
+              onRef={ref => this.chart = ref}
+            />
+            : <></>}
           </div>
         </div>
       </div>

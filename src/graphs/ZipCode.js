@@ -1,5 +1,8 @@
 import './ZipCode.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Content from '../content';
+import { GrAddCircle } from "react-icons/gr";
 import ApiContext from '../ApiContext';
 import CanvasJSReact from '../canvasjs-2.3.2/canvasjs.react';
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -136,7 +139,13 @@ export default class ZipCode extends React.Component {
           <div className="canvas">
             {
             filteredReports.length === 0 && this.state.code.touched ?
-              <div>There are no reports for that zipcode.</div>:
+              <div>No reports have been subbmitted for that zipcode. Would you like to submit a report?
+                <Content className='submitReport'>
+                  <Link to='/report'>
+                    <GrAddCircle />
+                  </Link>
+                </Content>
+              </div>:
             issubmitted ?
             <CanvasJSChart options = {options}
               onRef={ref => this.chart = ref}
