@@ -51,37 +51,44 @@ export default class State extends React.Component {
   }
 
   render() {
+    //date & number of reports data for selected state
     console.log(this.state.stateid); // 3
-  //date & number of reports data
     let dataPoints =  [];
     let selectedValues = [];
     let existingValues = this.context.reports;
-    console.log(existingValues); //shows all arrays
+
+    // shows all reports for specified state
     let filteredReports = this.getFilteredReports(existingValues);
-    console.log(filteredReports); // working
+    console.log(filteredReports);
+
+    // returns date values, includes duplicate dates
     for (let i = 0; i < filteredReports.length; i++) {
       selectedValues.push({
         label: filteredReports[i].diagnosis_date
       })
-    } // returns date values, includes duplicate dates
+    }
     console.log(selectedValues);
 
     //removes duplicate date values
     let jsonObject = selectedValues.map(JSON.stringify);
     let uniqueSet = new Set(jsonObject);
     let uniqueArray = Array.from(uniqueSet).map(JSON.parse);
+    console.log(uniqueArray);
+
     // counts date occurences
     let dateOccurences = this.duplicateDates(selectedValues);
     console.log(dateOccurences)
+
+    // retrieves count values and formats for graph
     let dateCount = Object.values(dateOccurences);
-    console.log(dateCount)
+    console.log(dateCount) // [1, 1, 2, 1]
     let yObj = [];
-    // retrieves coutn values and formats for graph
     for (let i = 0; i < dateCount.length; i++) {
       yObj.push({
         y: dateCount[i]
       });
     }
+    console.log(yObj);
 
     //merges label objects and y objects
     dataPoints = uniqueArray.map((label, i) => {
@@ -96,7 +103,7 @@ export default class State extends React.Component {
     const options = {
 			theme: "light2",
 			title: {
-				text: "New Reports Over Time"
+				text: "Number of New Reports Over Time"
           //{ message: `Reports Over Time for the state of '${us_state.stateid}'`}
 			},
 			axisY: {
