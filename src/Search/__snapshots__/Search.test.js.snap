@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a .instructions by default 1`] = `
+<div>
+  <div
+    className="instructions"
+  >
+    <Content
+      className="Search"
+    >
+      <h3>
+        Get Data!
+      </h3>
+      <p
+        className="info"
+      >
+        Select what data you would like to see:
+      </p>
+      <p
+        className="info"
+      >
+        View all reports submitted to Oyez by state:
+        <Link
+          to="/all"
+        >
+          <GrBarChart />
+        </Link>
+      </p>
+      <p
+        className="info"
+      >
+        View new reports over time by state:
+        <Link
+          to="/state"
+        >
+          <GrLineChart />
+        </Link>
+      </p>
+      <p
+        className="info"
+      >
+        View by zipcode:
+        <Link
+          to="/zipcode"
+        >
+          <GrPieChart />
+        </Link>
+      </p>
+    </Content>
+  </div>
+</div>
+`;

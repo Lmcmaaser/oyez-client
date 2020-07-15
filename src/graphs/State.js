@@ -83,6 +83,11 @@ export default class State extends React.Component {
     let uniqueArray = Array.from(uniqueSet).map(JSON.parse);
     console.log(uniqueArray);
 
+    for (let i =0; i< uniqueArray.length; i++) {
+      let d = new Date (uniqueArray[i].label);
+      uniqueArray[i].label = d.toDateString();
+    }
+
     // counts date occurences
     let dateOccurences = this.duplicateDates(selectedValues);
     console.log(dateOccurences)
