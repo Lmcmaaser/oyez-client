@@ -6,9 +6,9 @@ import Blurb from '../Blurb/Blurb';
 import Report from '../Report/Report';
 import Submitted from '../Submitted/Submitted'
 import Search from '../Search/Search'
-import All from '../graphs/All';
-import State from '../graphs/State';
-import ZipCode from '../graphs/ZipCode';
+import All from '../All/All';
+import State from '../State/State';
+import ZipCode from '../ZipCode/ZipCode';
 import ApiContext from '../ApiContext';
 import Footer from '../Footer/Footer';
 import './App.css';

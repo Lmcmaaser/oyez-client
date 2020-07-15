@@ -5,8 +5,8 @@ export default class Submitted extends React.Component {
     return (
       <div>
         <div className="instructions">
-          <p className="info">Done! Your report was sent perfectly. </p>
-          /* something about having your other household get tested or fill out report */
+          <p className="info">Done! Your report was sent perfectly.</p>
+          <p className="info">If you live with others, please encourage them to get tested for COVID-19 and fill out their own report on Oyez!</p>
         </div>
       </div>
     )
