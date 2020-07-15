@@ -116,8 +116,8 @@ export default class ZipCode extends React.Component {
       <form className="form-group" onSubmit={event => this.handleSubmit(event)}>
         <fieldset>
           <legend>Report Form</legend>
-            <div className="display_as_row">
-              <label className="main-label" htmlFor="code">Input a Zip Code *</label>
+            <div className="display">
+              <label className="main-label" htmlFor="code">Input a Zip Code*</label>
               <input
                 type="text"
                 name="code"

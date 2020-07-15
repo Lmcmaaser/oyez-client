@@ -5,12 +5,23 @@
     align-items: center;
     justify-content: space-evenly;
     list-style-type: none;
-    padding: 15px;
+    padding: 10px;
     margin: 5px 0px 5px 0px;
     background-color: white;
     border: 5px solid #FAA341;
     border-radius: 8px;
     font-size: 18px;
+  }
+
+  .nav-contacts {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  svg {
+    height: 1.5em;
+    width: 1.5em;
   }
 /* desktop view */
 @media screen and (min-width: 600px) {
@@ -22,29 +33,33 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #FAA341; /* #111; */
+    background-color: #FAA341;
     border: 5px solid #FAA341;
     border-radius: 8px;
     overflow-x: hidden;
-    padding-top: 45px;
+    padding: 50px 5px 0px 5px;
     margin: 0px;
-    /* border: 5px solid #111;
-    border-radius: 8px; */
+    text-align: center;
   }
 
-  nav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 22px;
-    color: #818181;
-    display: block;
+  a {
+    padding: 0px;
+    margin-right: 20px
   }
 
-  h4 {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 22px;
-    color: #818181;
-    display: block;
+  .nav-contacts {
+    padding: 5px;
+    margin-bottom: 40px;
+    text-align: center;
   }
+
+  path {
+    margin-bottom: 10px;
+  }
+
+  svg {
+    height: 1.5em;
+    width: 1.5em;
+  }
+
 }

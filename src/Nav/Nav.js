@@ -10,15 +10,21 @@ export default class Nav extends React.Component {
   render () {
     return (
       <Content className='Nav'>
-        <Link to='/'>
-          <GrHome />
-        </Link>
-        <Link to='/report'>
-          <GrAddCircle />
-        </Link>
-        <Link to='/search'>
-          <GrSearch />
-        </Link>
+        <div className='nav-contacts'>
+          <Link to='/'>
+            <GrHome />
+          </Link>
+        </div>
+        <div className='nav-contacts'>
+          <Link to='/report'>
+            <GrAddCircle />
+          </Link>
+        </div>
+        <div className='nav-contacts'>
+          <Link to='/search'>
+            <GrSearch />
+          </Link>
+        </div>
       </Content>
     )
   }

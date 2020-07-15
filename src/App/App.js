@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Blurb from '../Blurb/Blurb';
 import Report from '../Report/Report';
+import Submitted from '../Submitted/Submitted'
 import Search from '../Search/Search'
 import All from '../graphs/All';
 import State from '../graphs/State';
@@ -94,6 +95,7 @@ export default class App extends Component {
           <main className="main_content" role="main">
             <Route exact path='/' component={Blurb}/>
               <Route path='/report' component={Report} />
+              <Route path='/submitted' component={Submitted} />
               <Route path='/search' component={Search} />
               <Route path='/all' component={All} />
               <Route path='/state' component={State} />

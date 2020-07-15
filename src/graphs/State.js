@@ -132,7 +132,7 @@ export default class State extends React.Component {
         <form className="form-group" onSubmit={event => this.handleSubmit(event)}>
           <fieldset>
             <legend>Select state</legend>
-              <div className="display_as_row">
+              <div className="display">
                 <label className="main-label" htmlFor="stateid">Select a State*</label>
                 <select
                   name="stateid"

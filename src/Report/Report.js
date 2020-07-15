@@ -65,30 +65,8 @@ export default class Report extends React.Component {
     console.log(report);
     this.context.addReport(report);
     //this.resetForm();
-    this.props.history.push('/search');
+    this.props.history.push('/submitted');
   }
-
-  // resetForm() {
-  //   this.setState({
-  //     code: {
-  //       value: '',
-  //       touched: false
-  //     },
-  //     diagnosis_type: {
-  //       value: '',
-  //       touched: false
-  //     },
-  //     diagnosis_date: {
-  //       value: '',
-  //       touched: false
-  //     },
-  //     household: {
-  //       value: '',
-  //       touched: false
-  //     }
-  //   })
-  //   document.querySelector('input[name="diagnosis_type"]:checked').checked = false;
-  // }
 
   validateZipCode() {
     const zip_code = this.state.code.value.trim();
@@ -173,7 +151,6 @@ export default class Report extends React.Component {
                   />
                   <span className="checkmark"></span>
                 Self-diagnosis based on my symptoms</label>
-                <div>* If you were tested and diagnosed by your doctor, select the tested option.</div>
               <label className="main-label">When were you diagnosed? </label>
                 <input
                   type="date"

@@ -7,8 +7,12 @@ export default class Footer extends Component {
   render() {
     return (
       <div className='Footer'>
-        <p><a href="https://github.com/Lmcmaaser" target="_blank"><GrGithub /></a></p>
-        <p><a href="" target="_blank"><GrMailOption /></a></p>
+        <div className='contacts'>
+          <a href="https://github.com/Lmcmaaser" target="_blank"><GrGithub /></a>
+        </div>
+        <div className='contacts'>
+          <a href="" target="_blank"><GrMailOption /></a>
+        </div>
       </div>
     )
   }

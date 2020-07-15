@@ -23,7 +23,7 @@ h1 {
   flex-grow: 2;
   flex-direction: column;
   justify-content: center;
-  padding: 15px;
+  padding: 5px;
   font-size: 22px; /* Increased text to enable scrolling */
   border: 5px solid #FAA341;
   border-radius: 8px;
