@@ -61,7 +61,7 @@ export default class State extends React.Component {
     let dataPoints =  [];
     let selectedValues = [];
     let existingValues = this.context.reports;
-
+    console.log(existingValues);
     // shows all reports for specified state
     let filteredReports = this.getFilteredReports(existingValues);
 
@@ -101,7 +101,7 @@ export default class State extends React.Component {
         ...yObj[i]
       }
     })
-
+    console.log(dataPoints);
     const options = {
 			theme: "light2",
 			title: {
