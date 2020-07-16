@@ -7,7 +7,9 @@ import { GrAddCircle } from "react-icons/gr";
 import { GrSearch } from "react-icons/gr";
 
 export default class Nav extends React.Component {
+
   render () {
+    
     return (
       <Content className='Nav'>
         <div className='nav-contacts'>

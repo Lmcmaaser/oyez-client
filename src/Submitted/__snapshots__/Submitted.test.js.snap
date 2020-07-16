@@ -8,7 +8,12 @@ exports[`renders a .instructions by default 1`] = `
     <p
       className="info"
     >
-      Done! Your report was sent perfectly. 
+      Done! Your report was sent perfectly.
+    </p>
+    <p
+      className="info"
+    >
+      If you live with others, please encourage them to get tested for COVID-19 and fill out their own report on Oyez!
     </p>
   </div>
 </div>

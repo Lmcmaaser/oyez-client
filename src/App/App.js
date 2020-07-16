@@ -19,6 +19,7 @@ export default class App extends Component {
       us_states: []
     }
   };
+
   constructor(props) {
     super(props)
     this.state = {
@@ -75,14 +76,14 @@ export default class App extends Component {
   componentDidMount() {
     this.getAllData();
   }
+
   render() {
     const contextValue = {
       us_states: this.state.us_states,
       reports: this.state.reports,
       addReport: this.handleAddReport
     }
-    console.log(this.state.reports);
-    console.log(this.state.us_states);
+
     return (
       <ApiContext.Provider value={contextValue}>
         <div className="App">

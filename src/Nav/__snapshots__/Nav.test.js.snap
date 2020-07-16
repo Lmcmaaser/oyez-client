@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a .Nav by default 1`] = `
+<Content
+  className="Nav"
+>
+  <div
+    className="nav-contacts"
+  >
+    <Link
+      to="/"
+    >
+      <GrHome />
+    </Link>
+  </div>
+  <div
+    className="nav-contacts"
+  >
+    <Link
+      to="/report"
+    >
+      <GrAddCircle />
+    </Link>
+  </div>
+  <div
+    className="nav-contacts"
+  >
+    <Link
+      to="/search"
+    >
+      <GrSearch />
+    </Link>
+  </div>
+</Content>
+`;

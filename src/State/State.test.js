@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import State from './State'
 
-it('renders a .form-group by default', () => {
+it('renders a .item by default', () => {
   const wrapper = shallow(<State />)
   expect(toJson(wrapper)).toMatchSnapshot()
 })

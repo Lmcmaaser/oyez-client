@@ -47,13 +47,13 @@ export default class ZipCode extends React.Component {
   }
 
   render() {
+
     let dataPoints =  [];
     let existingValues = this.context.reports;
     let selfCount = 0;
     let testCount = 0;
     let doctorCount = 0;
     let filteredReports = this.getFilteredReports(existingValues)
-    console.log(filteredReports);
 
     let labelTest = {label: "test"};
     let labelDoc = {label: "doctor"};
@@ -90,7 +90,6 @@ export default class ZipCode extends React.Component {
 
     // add desired objects to dataPoints array
     dataPoints.push(testPoints, doctorPoints, selfPoints);
-    console.log(dataPoints); //correct format
 
     //place rendering of graph in an if else statement if touched is true, display graph
     const options = {
@@ -111,8 +110,9 @@ export default class ZipCode extends React.Component {
 			}]
 		}
     let issubmitted = this.state.issubmitted;
+
     return (
-      <div>
+      <div className="item">
       <form className="form-group" onSubmit={event => this.handleSubmit(event)}>
         <fieldset>
           <legend>Report Form</legend>

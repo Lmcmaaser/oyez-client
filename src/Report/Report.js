@@ -64,7 +64,6 @@ export default class Report extends React.Component {
     }
     console.log(report);
     this.context.addReport(report);
-    //this.resetForm();
     this.props.history.push('/submitted');
   }
 
@@ -82,9 +81,11 @@ export default class Report extends React.Component {
       return "Your response may only contain a numbers"
     }
   }
+
   render() {
     const zipCodeError = this.validateZipCode();
     const householdError = this.validateHousehold();
+
     return (
       <div className="report-page">
         <h3>Submit a Report</h3>

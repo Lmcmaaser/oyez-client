@@ -30,8 +30,6 @@ export default class State extends React.Component {
       stateid: us_state,
       issubmitted: true
     });
-    console.log(us_state); // {stateid: "3"}
-    console.log(this.state.stateid); // 3
   }
 
   //selects reports by state
@@ -60,14 +58,12 @@ export default class State extends React.Component {
 
   render() {
     //date & number of reports data for selected state
-    console.log(this.state.stateid); // 3
     let dataPoints =  [];
     let selectedValues = [];
     let existingValues = this.context.reports;
 
     // shows all reports for specified state
     let filteredReports = this.getFilteredReports(existingValues);
-    console.log(filteredReports);
 
     // returns date values, includes duplicate dates
     for (let i = 0; i < filteredReports.length; i++) {
@@ -75,13 +71,11 @@ export default class State extends React.Component {
         label: filteredReports[i].diagnosis_date
       })
     }
-    console.log(selectedValues);
 
     //removes duplicate date values
     let jsonObject = selectedValues.map(JSON.stringify);
     let uniqueSet = new Set(jsonObject);
     let uniqueArray = Array.from(uniqueSet).map(JSON.parse);
-    console.log(uniqueArray);
 
     for (let i =0; i< uniqueArray.length; i++) {
       let d = new Date (uniqueArray[i].label);
@@ -90,18 +84,15 @@ export default class State extends React.Component {
 
     // counts date occurences
     let dateOccurences = this.duplicateDates(selectedValues);
-    console.log(dateOccurences)
 
     // retrieves count values and formats for graph
     let dateCount = Object.values(dateOccurences);
-    console.log(dateCount) // [1, 1, 2, 1]
     let yObj = [];
     for (let i = 0; i < dateCount.length; i++) {
       yObj.push({
         y: dateCount[i]
       });
     }
-    console.log(yObj);
 
     //merges label objects and y objects
     dataPoints = uniqueArray.map((label, i) => {
@@ -110,8 +101,6 @@ export default class State extends React.Component {
         ...yObj[i]
       }
     })
-
-    console.log(dataPoints);
 
     const options = {
 			theme: "light2",
@@ -133,7 +122,7 @@ export default class State extends React.Component {
 
     let issubmitted = this.state.issubmitted;
     return (
-      <div>
+      <div className="item">
         <form className="form-group" onSubmit={event => this.handleSubmit(event)}>
           <fieldset>
             <legend>Select state</legend>

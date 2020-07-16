@@ -9,5 +9,5 @@ it('renders a .report-page by default', () => {
 })
 
 it('renders without crashing', () => {
-  shallow(<Report/>);
+  shallow(<Report />);
 });

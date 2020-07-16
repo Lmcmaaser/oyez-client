@@ -9,7 +9,6 @@ export default class All extends React.Component {
   compareValues(key, order = 'asc') {
     return function innerSort(a, b) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-      // property doesn't exist on either object
         return 0;
       }
 
@@ -35,7 +34,6 @@ export default class All extends React.Component {
     let existingStates = this.context.us_states;
     let stateidValues = [];
     let stateValue = [];
-    console.log(existingStates)
 
     //array of objects, stateid and number or reports for each state
     this.context.reports.forEach(report => {
@@ -43,18 +41,15 @@ export default class All extends React.Component {
         if (existingValue === undefined) {
           selectedValues.push({
             stateid: report.stateid,
-            // name: this.context.us_states.find(us_state => us_state.stateid === report.stateid).name,
             count: 1
           });
         } else {
         existingValue.count++;
       }
     });
-    console.log(selectedValues);
 
     // sorts stateid in ascending order
     let sortedValues = selectedValues.sort(this.compareValues('stateid', 'asc'));
-    console.log(sortedValues);
 
     //returns an array of stateid objects (ex. {stateid: 3}) for use in getting state names
     for(let i = 0; i < selectedValues.length; i++) {
@@ -62,12 +57,10 @@ export default class All extends React.Component {
         stateid:selectedValues[i].stateid
       });
     }
-    console.log(stateidValues);
 
     //finds state names based on report stateid
     for(let i = 0; i < existingStates.length; i++) {
       for(let j = 0; j < stateidValues.length; j++) {
-        // console.log("vals: ", this.context.us_states[i], stateidValues[j]);
         if (Number(existingStates[i].stateid) ===   Number(stateidValues[j].stateid)) {
           stateValue.push({
             label:existingStates[i].name
@@ -75,24 +68,22 @@ export default class All extends React.Component {
         }
       }
     }
-    console.log(stateValue); // returns: [{label: "ALABAMA"}, {label: "ARIZONA"}, {label: "CALIFORNIA"}, {label: "MASSACHUSETTS"}]
 
+    //returns an array of count objects (ex. {count: 5})
     let countValues = [];
     for(let i = 0; i < sortedValues.length; i++) {
       countValues.push({
         y:sortedValues[i].count
       });
     }
-    console.log(countValues); //returns an array of count objects (ex. {count: 5})
 
-      //merges label objects and y objects
+    //merges label objects and y objects
     dataPoints = stateValue.map((label, i) => {
       return {
         ...label,
         ...countValues[i]
       }
     })
-    console.log(dataPoints);
 
     const options = {
       animationEnabled: true,
@@ -114,7 +105,7 @@ export default class All extends React.Component {
       ]
     }
     return (
-      <div>
+      <div className="item">
         <h3>
           All Reported Instances
         </h3>
