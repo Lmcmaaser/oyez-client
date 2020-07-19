@@ -43,6 +43,29 @@ export default class State extends React.Component {
     });
   }
 
+  compareValues(key, order = 'asc') {
+    return function innerSort(a, b) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        return 0;
+      }
+
+      const varA = (typeof a[key] === 'string')
+        ? a[key].toUpperCase() : a[key];
+      const varB = (typeof b[key] === 'string')
+        ? b[key].toUpperCase() : b[key];
+
+      let comparison = 0;
+      if (varA > varB) {
+        comparison = 1;
+      } else if (varA < varB) {
+        comparison = -1;
+      }
+      return (
+        (order === 'desc') ? (comparison * -1) : comparison
+      );
+    };
+  }
+
   //counts duplicate dates
   duplicateDates = (arr) => {
     const dups = {}
@@ -72,8 +95,11 @@ export default class State extends React.Component {
       })
     }
 
+    //sorts dates
+    let sortedValues = selectedValues.sort(this.compareValues('label', 'asc'));
+
     //removes duplicate date values
-    let jsonObject = selectedValues.map(JSON.stringify);
+    let jsonObject = sortedValues.map(JSON.stringify);
     let uniqueSet = new Set(jsonObject);
     let uniqueArray = Array.from(uniqueSet).map(JSON.parse);
 
@@ -83,7 +109,7 @@ export default class State extends React.Component {
     }
 
     // counts date occurences
-    let dateOccurences = this.duplicateDates(selectedValues);
+    let dateOccurences = this.duplicateDates(sortedValues);
 
     // retrieves count values and formats for graph
     let dateCount = Object.values(dateOccurences);
@@ -94,6 +120,7 @@ export default class State extends React.Component {
       });
     }
 
+
     //merges label objects and y objects
     dataPoints = uniqueArray.map((label, i) => {
       return {
@@ -101,12 +128,11 @@ export default class State extends React.Component {
         ...yObj[i]
       }
     })
-    
+
     const options = {
 			theme: "light2",
 			title: {
 				text: "Number of New Reports Over Time"
-          //{ message: `Reports Over Time for the state of '${us_state.stateid}'`}
 			},
 			axisY: {
 				title: "Number of Reports",
@@ -147,6 +173,7 @@ export default class State extends React.Component {
               </div>
           </fieldset>
         </form>
+        <div>* All dates displayed in UTC</div>
         <div className="results_group">
           <div className="canvas">
             {
