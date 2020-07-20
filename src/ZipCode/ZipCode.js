@@ -49,7 +49,7 @@ export default class ZipCode extends React.Component {
   render() {
 
     let dataPoints =  [];
-    let existingValues = this.context.reports;
+    let existingValues = this.context.reports || [];
     let selfCount = 0;
     let testCount = 0;
     let doctorCount = 0;

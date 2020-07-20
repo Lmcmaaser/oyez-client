@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a .item by default 1`] = `
+<div
+  className="item"
+>
+  <form
+    className="form-group"
+    onSubmit={[Function]}
+  >
+    <fieldset>
+      <legend>
+        Report Form
+      </legend>
+      <div
+        className="display"
+      >
+        <label
+          className="main-label"
+          htmlFor="code"
+        >
+          Input a Zip Code*
+        </label>
+        <input
+          aria-label="input zip code"
+          id="code"
+          name="code"
+          required={true}
+          type="text"
+        />
+        <button
+          aria-label="submit-button"
+          className="submit-button"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </fieldset>
+  </form>
+  <div
+    className="results_group"
+  >
+    <div
+      className="canvas"
+    />
+  </div>
+</div>
+`;

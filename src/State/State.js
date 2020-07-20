@@ -83,7 +83,7 @@ export default class State extends React.Component {
     //date & number of reports data for selected state
     let dataPoints =  [];
     let selectedValues = [];
-    let existingValues = this.context.reports;
+    let existingValues = this.context.reports || [];
 
     // shows all reports for specified state
     let filteredReports = this.getFilteredReports(existingValues);
@@ -105,7 +105,8 @@ export default class State extends React.Component {
 
     for (let i =0; i< uniqueArray.length; i++) {
       let d = new Date (uniqueArray[i].label);
-      uniqueArray[i].label = d.toDateString();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      uniqueArray[i].label = d.toLocaleDateString("en-US", options);
     }
 
     // counts date occurences
@@ -159,7 +160,7 @@ export default class State extends React.Component {
                   required
                   aria-label="select state"
                 >
-                  {this.context.us_states.map(us_state =>
+                  {this.context.us_states && this.context.us_states.map(us_state =>
                     <option key={us_state.stateid} value={us_state.stateid}>{us_state.name}</option>
                   )}
                 </select>

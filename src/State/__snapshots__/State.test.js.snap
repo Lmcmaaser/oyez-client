@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a .item by default 1`] = `
+<div
+  className="item"
+>
+  <form
+    className="form-group"
+    onSubmit={[Function]}
+  >
+    <fieldset>
+      <legend>
+        Select state
+      </legend>
+      <div
+        className="display"
+      >
+        <label
+          className="main-label"
+          htmlFor="stateid"
+        >
+          Select a State*
+        </label>
+        <select
+          aria-label="select state"
+          name="stateid"
+          required={true}
+        />
+        <button
+          aria-label="submit-button"
+          className="submit-button"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </fieldset>
+  </form>
+  <div>
+    * All dates displayed in UTC
+  </div>
+  <div
+    className="results_group"
+  >
+    <div
+      className="canvas"
+    />
+  </div>
+</div>
+`;

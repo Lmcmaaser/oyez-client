@@ -31,12 +31,13 @@ export default class All extends React.Component {
   render() {
     let dataPoints =  [];
     let selectedValues = [];
-    let existingStates = this.context.us_states;
+    let existingStates = this.context.us_states || [];
     let stateidValues = [];
     let stateValue = [];
 
     //array of objects, stateid and number or reports for each state
-    this.context.reports.forEach(report => {
+    if (this.context.reports) {
+      this.context.reports.forEach(report => {
       let existingValue = selectedValues.find(value => value.stateid === parseInt(report.stateid));
         if (existingValue === undefined) {
           selectedValues.push({
@@ -47,6 +48,7 @@ export default class All extends React.Component {
         existingValue.count++;
       }
     });
+  }
 
     // sorts stateid in ascending order
     let sortedValues = selectedValues.sort(this.compareValues('stateid', 'asc'));

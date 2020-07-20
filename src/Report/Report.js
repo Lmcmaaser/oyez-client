@@ -99,7 +99,7 @@ export default class Report extends React.Component {
                 aria-label="select state"
                 onChange={event => this.updateStateId(event.target.value)}
               >
-                {this.context.us_states.map(us_state =>
+                {this.context.us_states && this.context.us_states.map(us_state =>
                   <option key={us_state.stateid} value={us_state.stateid}>{us_state.name}</option>
                 )}
               </select>

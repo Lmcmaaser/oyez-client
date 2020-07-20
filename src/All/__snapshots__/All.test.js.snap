@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a .item by default 1`] = `
+<div
+  className="item"
+>
+  <h3>
+    All Reported Instances
+  </h3>
+  <div
+    className="results_group"
+  >
+    <CanvasJSChart
+      onRef={[Function]}
+      options={
+        Object {
+          "animationEnabled": true,
+          "axisX": Object {
+            "title": "States",
+          },
+          "axisY": Object {
+            "title": "Total Number of Reports",
+          },
+          "data": Array [
+            Object {
+              "dataPoints": Array [],
+              "type": "bar",
+            },
+          ],
+          "theme": "light2",
+          "title": Object {
+            "text": "Self-Reported Instances of COVID-19 by State",
+          },
+        }
+      }
+    />
+  </div>
+</div>
+`;

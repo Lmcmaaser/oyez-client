@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a .report-page by default 1`] = `
+<div
+  className="report-page"
+>
+  <h3>
+    Submit a Report
+  </h3>
+  <form
+    className="form-group"
+    onSubmit={[Function]}
+  >
+    <fieldset>
+      <legend>
+        Report Form
+      </legend>
+      <label
+        className="main-label"
+        htmlFor="stateid"
+      >
+        What state do you live in?
+      </label>
+      <select
+        aria-label="select state"
+        name="stateid"
+        onChange={[Function]}
+        required={true}
+      />
+      <label
+        className="main-label"
+      >
+        What is your zip code?
+      </label>
+      <input
+        aria-label="input zip code"
+        id="code"
+        name="code"
+        onChange={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+      <label
+        className="main-label"
+        htmlFor="diagnosis_type"
+      >
+        How were you diagnosed?
+      </label>
+      <label
+        htmlFor="container"
+      >
+        <input
+          aria-label="select test diagnosis type"
+          id="test"
+          name="diagnosis_type"
+          onChange={[Function]}
+          type="radio"
+          value="test"
+        />
+        <span
+          className="checkmark"
+        />
+        Tested positive
+      </label>
+      <label
+        htmlFor="container"
+      >
+        <input
+          aria-label="select doctor diagnosis type"
+          id="doctor"
+          name="diagnosis_type"
+          onChange={[Function]}
+          type="radio"
+          value="doctor"
+        />
+        <span
+          className="checkmark"
+        />
+        Doctor's professional assessment (diagnosis made without a test)
+      </label>
+      <label
+        htmlFor="container"
+      >
+        <input
+          aria-label="select self diagnosis type"
+          id="self"
+          name="diagnosis_type"
+          onChange={[Function]}
+          type="radio"
+          value="self"
+        />
+        <span
+          className="checkmark"
+        />
+        Self-diagnosis based on my symptoms
+      </label>
+      <label
+        className="main-label"
+      >
+        When were you diagnosed? 
+      </label>
+      <input
+        aria-label="date of diagnosis"
+        id="diagnosis_date"
+        name="diagnosis_date"
+        onChange={[Function]}
+        required={true}
+        type="date"
+        value=""
+      />
+      <label
+        className="main-label"
+      >
+        How many people live with you in your household?
+      </label>
+      <input
+        aria-label="number people in your hosuehold"
+        id="household"
+        name="household"
+        onChange={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+      <button
+        aria-label="submit-button"
+        className="submit-button"
+        disabled="Zip code may only contain numbers"
+        type="submit"
+      >
+        Submit
+      </button>
+    </fieldset>
+  </form>
+</div>
+`;
