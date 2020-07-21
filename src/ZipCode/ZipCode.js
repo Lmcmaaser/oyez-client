@@ -32,8 +32,6 @@ export default class ZipCode extends React.Component {
       code: zip,
       issubmitted: true
     });
-    console.log(zip); // shows {code: "85308"} value is a string
-    console.log(this.state.code); //shows zip code number only, value is int
   }
 
   getFilteredReports = (reports) => {
@@ -139,7 +137,7 @@ export default class ZipCode extends React.Component {
           <div className="canvas">
             {
             filteredReports.length === 0 && this.state.code.touched ?
-              <div>No reports have been subbmitted for that zipcode. Would you like to submit a report?
+              <div>No reports have been submitted for that zipcode. Would you like to submit a report?
                 <Content className='submitReport'>
                   <Link to='/report'>
                     <GrAddCircle />

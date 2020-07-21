@@ -33,19 +33,15 @@ export default class Report extends React.Component {
   }
 
   updateStateId(stateid) {
-    console.log(stateid);
     this.setState({stateid: {value: stateid, touched: true}});
   }
   updateZipCode(code) {
-    console.log(code);
     this.setState({code: {value: code, touched: true}});
   }
   updateDiagnosisType(diagnosis_type) {
-    console.log(diagnosis_type);
     this.setState({diagnosis_type: {value: diagnosis_type, touched: true}});
   }
   updateDiagnosisDate(diagnosis_date) {
-    console.log(diagnosis_date);
     this.setState({diagnosis_date: {value: diagnosis_date, touched: true}});
   }
   updateHousehold(household) {
@@ -62,7 +58,6 @@ export default class Report extends React.Component {
       household: household.value,
       stateid: stateid.value
     }
-    console.log(report);
     this.context.addReport(report);
     this.props.history.push('/submitted');
   }

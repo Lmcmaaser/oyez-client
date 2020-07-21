@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './Blurb.css';
 
 export default class Blurb extends Component {
-
   render() {
-    
     return (
       <div>
         <h3>How to Use Oyez!</h3>

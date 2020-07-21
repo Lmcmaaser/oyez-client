@@ -66,9 +66,9 @@ export default class All extends React.Component {
         if (Number(existingStates[i].stateid) ===   Number(stateidValues[j].stateid)) {
           stateValue.push({
             label:existingStates[i].name
-          })
-        }
-      }
+          });
+        };
+      };
     }
 
     //returns an array of count objects (ex. {count: 5})
@@ -84,7 +84,7 @@ export default class All extends React.Component {
       return {
         ...label,
         ...countValues[i]
-      }
+      };
     })
 
     const options = {

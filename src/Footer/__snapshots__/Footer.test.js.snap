@@ -9,6 +9,7 @@ exports[`renders a .Footer by default 1`] = `
   >
     <a
       href="https://github.com/Lmcmaaser"
+      rel="noopener noreferrer"
       target="_blank"
     >
       <GrGithub />
@@ -19,6 +20,7 @@ exports[`renders a .Footer by default 1`] = `
   >
     <a
       href="mailto:lmcmaaser@gmail.com"
+      rel="noopener noreferrer"
       target="_blank"
     >
       <GrMailOption />
@@ -29,6 +31,7 @@ exports[`renders a .Footer by default 1`] = `
   >
     <a
       href="https://www.linkedin.com/in/laurenmaaser"
+      rel="noopener noreferrer"
       target="_blank"
     >
       <GrLinkedinOption />

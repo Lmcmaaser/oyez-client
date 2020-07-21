@@ -5,7 +5,7 @@ export default class HasError extends React.Component {
     super(props);
     this.state = {
       hasError: false
-      };
+    };
   }
   static getDerivedStateFromError(error) {
     return { hasError: true };
@@ -18,5 +18,5 @@ export default class HasError extends React.Component {
       );
     }
     return this.props.children;
-  }
+  };
 };

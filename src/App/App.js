@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Blurb from '../Blurb/Blurb';
 import Report from '../Report/Report';
-import Submitted from '../Submitted/Submitted'
+import Submitted from '../Submitted/Submitted';
 import Search from '../Search/Search'
 import All from '../All/All';
 import State from '../State/State';
@@ -26,7 +26,7 @@ export default class App extends Component {
       reports: [],
       us_states: this.props.data.us_states,
     }
-  }
+  };
 
   handleAddReport = report => {
     fetch(`${config.API_ENDPOINT}/reports`, {
@@ -48,7 +48,7 @@ export default class App extends Component {
       .catch(error => {
         console.error({error});
       })
-  }
+  };
 
   getAllData() {
     Promise.all([
@@ -71,19 +71,18 @@ export default class App extends Component {
       .catch(error => {
         console.error({error});
       })
-  }
+  };
 
   componentDidMount() {
     this.getAllData();
-  }
+  };
 
   render() {
     const contextValue = {
       us_states: this.state.us_states,
       reports: this.state.reports,
       addReport: this.handleAddReport
-    }
-
+    };
     return (
       <ApiContext.Provider value={contextValue}>
         <div className="App">

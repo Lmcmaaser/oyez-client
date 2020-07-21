@@ -205,4 +205,4 @@ export default {
       "name": "WYOMING"
     }
   ]
-}
+};

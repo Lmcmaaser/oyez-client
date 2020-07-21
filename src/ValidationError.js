@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,7 +9,7 @@ export default function ValidationError(props) {
       className="error">{props.message}</div>
     );
   }
-  return <></>
+  return <></>;
 };
 
 ValidationError.propTypes = {

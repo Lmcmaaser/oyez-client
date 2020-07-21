@@ -17,7 +17,7 @@ export default class State extends React.Component {
         touched: false
       },
       issubmitted: false
-    }
+    };
   }
 
   handleSubmit(event) {
@@ -74,9 +74,9 @@ export default class State extends React.Component {
         dups[date.label]++
       } else {
         dups[date.label] = 1
-      }
+      };
     })
-    return dups
+    return dups;
   }
 
   render() {
@@ -92,7 +92,7 @@ export default class State extends React.Component {
     for (let i = 0; i < filteredReports.length; i++) {
       selectedValues.push({
         label: filteredReports[i].diagnosis_date
-      })
+      });
     }
 
     //sorts dates
@@ -127,7 +127,7 @@ export default class State extends React.Component {
       return {
         ...label,
         ...yObj[i]
-      }
+      };
     })
 
     const options = {
